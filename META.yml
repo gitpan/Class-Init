@@ -1,0 +1,9 @@
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Class-Init
+version:      0.8
+version_from: Init.pm
+installdirs:  site
+requires:
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.12
