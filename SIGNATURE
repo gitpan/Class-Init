@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.34.
+signed via the Module::Signature module, version 0.38.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -15,16 +15,16 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 d7b7d0897251bfda6b8c28da66a66801b75664e3 Changes
-SHA1 9ae839e1a37f42830bf76754b9ee825313fffdcb Init.pm
+SHA1 1138b5c1bab10f0a7cc2823e54ba41e573f0cb06 Init.pm
 SHA1 f9b96f0e9f9aed05394ef44ef1434295631434af MANIFEST
-SHA1 080b8a647caaea9c24ca874a15ec595f8e1f7fd4 META.yml
+SHA1 0b36259dbf970bc94b08dae91b62694d5860d448 META.yml
 SHA1 b814b028241f1fe1b699a121e59cd6e7750555b4 Makefile.PL
 SHA1 8c8ba59ba4e9fe3c9486d4dcbc431a4a47c345e1 README
-SHA1 080a01d3e43352507263280298a1b2f70d5b2d38 t/01_basic.t
+SHA1 3de57f0508520db58c4b5265dfdd172e189a40cb t/01_basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.3 (Darwin)
 
-iD8DBQFAoYd7CV/r5CcpuVoRAu4fAJ9ymVkWBa0Pn3aiFWSS4SYGIbFgAACfeDyK
-+lVgpf2Ibfg/cWTvqNQwQyQ=
-=asji
+iD8DBQFAobKSCV/r5CcpuVoRAqdlAJ4vt34dmS0CpkDCq/ql0B9+umIz3QCgkZZu
+c3uf3GuCNrf2nq8v33oEQuA=
+=tsfj
 -----END PGP SIGNATURE-----

@@ -27,38 +27,28 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '0.8';
+our $VERSION = '0.9';
 
 
 # Preloaded methods go here.
 
-sub _init_handlers () {
-    # These get if they exist, in order, by new().
-    qw( init _init __init __init__ initialise initialize );
-}
-
-sub _default_constructor ($;@) {
+sub _init_constructor ($;@) {
     # This gets called if all else fails to create $self.
-    bless { @_[1..$#_] }, $_[0];
+    return bless { @_[1..$#_] }, $_[0];
 }
 
 sub new ($;@) {
     # Set $self to our parent's idea of new(), or otherwise just a simple blessed hashref.
-    my $self = $_[0]->NEXT::DISTINCT::new(@_[1..$#_]) || $_[0]->_default_constructor(@_[1..$#_]);
-    # Call any defined init handlers.
-    { no strict 'refs'; for ($_[0]->_init_handlers) {
-	next unless defined &$_;
-	$self->$_(@_[1..$#_]);
-    } }
+    my $self = $_[0]->NEXT::DISTINCT::new(@_[1..$#_]) || $_[0]->_init_constructor(@_[1..$#_]);
+    # Scan the inheritance tree for initialization routines and execute them, top-down.
+    $self->EVERY::_init(@_[1..$#_]);
 
     $self;
 }
 
-sub init ($;%) {
+sub _init ($;%) {
     # Install any default attributes into the object's hash.
     $_[0]->{$_[0+2*$_]} = $_[0]->{$_[1+2*$_]} for (1..($#_-1)/2);
-    # Call our parent's init, if it's available.
-    $_[0]->NEXT::DISTINCT::init(@_[1..$#_]);
 }
 
 1;
@@ -72,7 +62,7 @@ Class::Init - A base constructor class with support for local initialization met
 
   package Something::Spiffy;
   use base Class::Init;
-  sub init {
+  sub _init {
     my $self = shift;
     exists $self->{dsn} || die "parameter 'dsn' missing";
     $self->{_dbh} = DBI->connect($self->{dsn}) || die "DBI->connect failed";
