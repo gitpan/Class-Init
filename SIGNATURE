@@ -15,16 +15,26 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 d7b7d0897251bfda6b8c28da66a66801b75664e3 Changes
-SHA1 1138b5c1bab10f0a7cc2823e54ba41e573f0cb06 Init.pm
-SHA1 f9b96f0e9f9aed05394ef44ef1434295631434af MANIFEST
-SHA1 0b36259dbf970bc94b08dae91b62694d5860d448 META.yml
-SHA1 b814b028241f1fe1b699a121e59cd6e7750555b4 Makefile.PL
+SHA1 251caf2ef3051138247dc50e6ff69391f1cd3253 MANIFEST
+SHA1 daa6da8bb58d2dc13b281714a22cbd92987d313e META.yml
+SHA1 978debf4e62fea853db4e964f16b0ccccc8b34db Makefile.PL
 SHA1 8c8ba59ba4e9fe3c9486d4dcbc431a4a47c345e1 README
+SHA1 344429e0f046e1333dba4e71be3de77deaca4945 inc/Module/Install.pm
+SHA1 353bc0c9a2736e55d2aeb2de0b08a71581eed0a9 inc/Module/Install/Base.pm
+SHA1 fef5501dabb4d589ca262641b3e7de6987dd827e inc/Module/Install/Can.pm
+SHA1 be9a653d0612a6a0927fd87f0035b288c62093b5 inc/Module/Install/Fetch.pm
+SHA1 febc6230a8b002f9e58a893e1f7e806298be41a5 inc/Module/Install/MakeMaker.pm
+SHA1 f5d44620e4e189c325dc45a664992fdeb7055310 inc/Module/Install/Makefile.pm
+SHA1 74e99afdf3363f911c497bf907e7da922ff8c382 inc/Module/Install/Metadata.pm
+SHA1 0f1d973511328bcb427b735b709ebec67dcefb2e inc/Module/Install/PAR.pm
+SHA1 912e9b6b8ba77ca9fee5be30ca895527a4a0e96f inc/Module/Install/Win32.pm
+SHA1 1eda638553efd1f422b45d538e02a3565e23402d lib/Class/Init.pm
 SHA1 3de57f0508520db58c4b5265dfdd172e189a40cb t/01_basic.t
+SHA1 43bfbab80715940e0488ca96ab64ff98809fcbfc t/02_universal.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.3 (Darwin)
 
-iD8DBQFAobKSCV/r5CcpuVoRAqdlAJ4vt34dmS0CpkDCq/ql0B9+umIz3QCgkZZu
-c3uf3GuCNrf2nq8v33oEQuA=
-=tsfj
+iD8DBQFAodkXCV/r5CcpuVoRAmimAJsFK2SToCyVqAv3B+Ln1ZaRUfPdogCeLZWk
+kJh/IgAdpQB/CAMcff8Wcj0=
+=W/nQ
 -----END PGP SIGNATURE-----

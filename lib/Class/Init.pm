@@ -6,42 +6,28 @@ use warnings;
 
 use NEXT;
 
-require Exporter;
+our @EXPORT = qw( new );
+our @EXPORT_OK = @EXPORT;
 
+require Exporter;
 our @ISA = qw(Exporter);
 
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use Class::Init ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
-our %EXPORT_TAGS = ( 'all' => [ qw(
-	new
-) ] );
-
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-our @EXPORT = qw(
-	
-);
-
-our $VERSION = '0.9';
+our $VERSION = '1.0';
 
 
 # Preloaded methods go here.
 
-sub _init_constructor ($;@) {
+sub _constructor ($;@) {
     # This gets called if all else fails to create $self.
     return bless { @_[1..$#_] }, $_[0];
 }
 
 sub new ($;@) {
     # Set $self to our parent's idea of new(), or otherwise just a simple blessed hashref.
-    my $self = $_[0]->NEXT::DISTINCT::new(@_[1..$#_]) || $_[0]->_init_constructor(@_[1..$#_]);
+    my $self = $_[0]->_constructor(@_[1..$#_]);
     # Scan the inheritance tree for initialization routines and execute them, top-down.
-    $self->EVERY::_init(@_[1..$#_]);
+    $self->EVERY::LAST::_init(@_[1..$#_]);
+    $self->_init(@_[1..$#_]) if defined &_init;
 
     $self;
 }
@@ -79,6 +65,14 @@ Class::Init - A base constructor class with support for local initialization met
 
 =head1 DESCRIPTION
 
+Class::Init provides a constructor, C<new()>, that returns blessed hashrefs by
+default; that constructor runs all instances of the subroutine C<_init> it
+finds in the inheritance tree, top-down (C<EVERY>).
+
+The goal of this module is to reduce the amount of effort required to construct
+a simple object class; it helps reduce the amount of code that's duplicated
+between classes by providing a generic constructor, while allowing individual
+classes a low-effort way to publish their own changes to the new object.
 
 =head1 AUTHOR
 
