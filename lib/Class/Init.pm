@@ -12,7 +12,7 @@ our @EXPORT_OK = @EXPORT;
 require Exporter;
 our @ISA = qw(Exporter);
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 
 # Preloaded methods go here.
@@ -47,21 +47,18 @@ Class::Init - A base constructor class with support for local initialization met
 =head1 SYNOPSIS
 
   package Something::Spiffy;
-  use base Class::Init;
+  use base qw(Class::Init);
+
   sub _init {
     my $self = shift;
     exists $self->{dsn} || die "parameter 'dsn' missing";
     $self->{_dbh} = DBI->connect($self->{dsn}) || die "DBI->connect failed";
   }
-  sub users {
-    my $sth = shift->{_dbh}->prepare_cached("SELECT * FROM users");
-    $sth->execute(@_); return @{ $sth->fetchall_arrayref };
-  }
 
   package main;
+
   my $database = Something::Spiffy->new( dsn => '...' );
-  my @users = $database->users;
-  ...
+  my @users = $database->{_dbh}->...;
 
 =head1 DESCRIPTION
 
